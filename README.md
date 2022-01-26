@@ -1,7 +1,7 @@
 # JOSS_Reviewer_Matcher
 
 ## Premise of the project
-
+The premise of this project is to automatically pair editors and reviewers to relevant JOSS papers.
 
 ## Ideas
 
