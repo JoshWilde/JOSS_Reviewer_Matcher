@@ -10,6 +10,7 @@ from pdfminer.high_level import extract_text
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.stem import WordNetLemmatizer
 from nltk.probability import FreqDist
+from sklearn.metrics.pairwise import cosine_similarity
 
 df = np.load('Wikipedia_TF_IDF.npy',allow_pickle=True).item()
 
@@ -361,11 +362,14 @@ def Paper_vectors_TF_IDF(paper_list, model, num_top20=20, gen_pap_vec=Generate_P
         Paper_20_Dict[paper_list[k][-9:-4]] = doc_top20 # Adds the top N words to the dictionary
     return Paper_Dict, Paper_20_Dict
 
-def Paper_cosine(author_keys, paper_vec, N=5, printer=True):
+def Paper_cosine(author_keys, author_vectors, paper_vec, N=5, printer=True):
     ''' 
     Parameters
     ----------
         author_keys : Dictionary Keys
+            A
+            
+        author_vectors : Dictionary
             A
              
         paper_vec : array-like
